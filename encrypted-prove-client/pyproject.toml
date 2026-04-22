@@ -1,0 +1,11 @@
+[project]
+name = "encrypted-prove-client"
+version = "0.1.0"
+description = "Test client for plaintext and encrypted /prove requests"
+requires-python = ">=3.11"
+dependencies = [
+    "pynacl>=1.5.0",
+]
+
+[tool.uv]
+package = false
