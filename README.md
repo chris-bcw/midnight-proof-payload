@@ -10,6 +10,8 @@ Scripts
 
 - `check.sh` - Sends `check-payload.bin` to the server's `/check` endpoint and saves the response to `out/check-response.bin`.
 - `prove-a.sh` - Sends `prove-a-payload.bin` to the server's `/prove` endpoint and saves the response to `out/prove-a-response.bin`.
+- `prove-a-stream.py` - Sends `prove-a-payload.bin` to `/prove`, prints `proof-job-id` as soon as the response headers arrive, then saves the response body to `out/prove-a-response.bin`.
+- `status.py` - Sends a single `GET /status?jobId=...` request and prints the returned job metadata.
 - `prove-b.sh` - Sends `prove-b-payload.bin` to the server's `/prove` endpoint and saves the response to `out/prove-b-response.bin`.
 
 Behavior
@@ -35,6 +37,8 @@ Run with default URL:
 ```
 ./check.sh
 ./prove-a.sh
+python3 ./prove-a-stream.py
+python3 ./status.py <job-id>
 ./prove-b.sh
 ```
 
@@ -43,6 +47,8 @@ Run against a custom server URL:
 ```
 ./check.sh http://server.example:6300
 ./prove-a.sh http://server.example:6300
+python3 ./prove-a-stream.py http://server.example:6300
+python3 ./status.py <job-id> http://server.example:6300
 ./prove-b.sh http://server.example:6300
 ```
 
@@ -60,4 +66,6 @@ Files
 
 - See [preprod-server-7.0.0/check.sh](preprod-server-7.0.0/check.sh)
 - See [preprod-server-7.0.0/prove-a.sh](preprod-server-7.0.0/prove-a.sh)
+- See [preprod-server-7.0.0/prove-a-stream.py](preprod-server-7.0.0/prove-a-stream.py)
+- See [preprod-server-7.0.0/status.py](preprod-server-7.0.0/status.py)
 - See [preprod-server-7.0.0/prove-b.sh](preprod-server-7.0.0/prove-b.sh)

@@ -12,7 +12,7 @@ from nacl.public import Box, PrivateKey, PublicKey
 DEFAULT_URL = "http://172.16.0.37:8080"
 DEFAULT_PAYLOAD = Path("../preprod-server-7.0.0/prove-a-payload.bin")
 DEFAULT_OUT_DIR = Path("out")
-SERVER_PUBLIC_KEY_HEX = "9de8b9a8a272d483cff184c5e66e064501cdedf88f24b0ac6fac7ef918fadf2b"
+SERVER_PUBLIC_KEY_HEX = "9a0e4c505af2d973a53339b027d392259718eeaad6137235c66da9da116c652a"
 
 
 def post_bytes(
@@ -41,6 +41,8 @@ def write_output(path: Path, data: bytes) -> None:
 
 def print_result(label: str, status: int, headers: dict[str, str], body: bytes) -> None:
     print(f"[{label}] status={status} bytes={len(body)}")
+    if "proof-job-id" in headers:
+        print(f"[{label}] proof-job-id={headers['proof-job-id']}")
     if "response-nonce" in headers:
         print(f"[{label}] response-nonce={headers['response-nonce']}")
     print(f"[{label}] first-32-bytes={body[:32].hex()}")
